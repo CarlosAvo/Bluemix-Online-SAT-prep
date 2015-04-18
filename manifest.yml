@@ -1,5 +1,6 @@
 ---
 applications:
-- name: SATPrep  buildpack: python_buildpack
+- name: TriviaREST
+  buildpack: python_buildpack
   instances: 1
   memory: 128M

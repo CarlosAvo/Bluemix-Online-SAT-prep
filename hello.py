@@ -20,19 +20,44 @@ else:
 
 @app.route("/")
 def main():
+    
     cssCall="<HTML> <HEAD><TITLE>SAT Vocabulary</TITLE> <style media=\"screen\" type=\"text/css\"> #bigbutton {width:230px;\
 background: #00CC00; padding: 8px 14px 10px; border:1px solid #3e9cbf; cursor:pointer; font-size:1.5em;font-family:Oswald, sans-serif; \
 letter-spacing:.1em;text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3); color: #fff;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;\
 -moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #00CC00, 0px 10px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;\
--moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;}#bigbutton:hover, #bigbutton:focus {color:#dfe7ea;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;\
--moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;} #bigbutton{\
-position: fixed;    left: 580px;    top: 250px;} #text{position: fixed;left: 550px;top: 220px;padding: 1px 20px; border: 0;    height: 25px;\
-width: 275px;    border-radius: 10px;    -moz-border-radius: 10px; -webkit-border-radius: 10px;    box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset;\
--moz-box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset;    -webkit-box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset; -webkit-background-clip: padding-box;\
-outline: 0;</style> </HEAD><BODY bgcolor=\" #F1F1F1\">"
+-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;}#bigbutton:hover, #bigbutton:focus {color:#dfe7ea;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, \
+0px 2px 0px 0px #205c73, 0px 2px 5px #999;-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;\
+box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;} #bigbutton{\
+position: fixed;    left: 580px;    top: 250px;} #leader {width:230px;background: #00CC00; padding: 8px 14px 10px; border:1px solid #3e9cbf; cursor:pointer; font-size:1.5em;\
+font-family:Oswald, sans-serif; letter-spacing:.1em;text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3); color: #fff;\
+-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;\
+box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;}\
+#leader:hover, #leader:focus {color:#dfe7ea;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;\
+-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, \
+0px 2px 0px 0px #205c73, 0px 2px 5px #999;}#leader{position: fixed;    left: 580px;    top: 350px;}</style> </HEAD><BODY bgcolor=\" #F1F1F1\">"
        
         
-    return  cssCall+"<p style=\"text-align:center;font-size:35px;\">SAT Vocabulary Review<p/><form action=\"../Start\" method=\"POST\"><input id=\"bigbutton\" type=\"submit\" value=\"Start reviewing\" /></form><body/><html/> "
+    return  cssCall+"<p style=\"text-align:center;font-size:35px;\">SAT Vocabulary Review<p/><form action=\"../Start\" method=\"POST\"><input id=\"bigbutton\" type=\"submit\" value=\"Start reviewing\" /></form><form action=\"../LeaderBoards\" ><input id=\"leader\" type=\"submit\" value=\"Leaderboards\" /></form><body/><html/> "
+
+@app.route("/LeaderBoards")
+
+
+def leaderboards():
+    showScore=open("LeaderbordScores.txt","r")
+    cssCall="<HTML> <HEAD><TITLE>SAT Vocabulary</TITLE> <style media=\"screen\" type=\"text/css\"> #bigbutton {width:230px;\
+background: #00CC00; padding: 8px 14px 10px; border:1px solid #3e9cbf; cursor:pointer; font-size:1.5em;font-family:Oswald, sans-serif; \
+letter-spacing:.1em;text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3); color: #fff;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;\
+-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #00CC00, 0px 10px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;\
+-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;}#bigbutton:hover, #bigbutton:focus {color:#dfe7ea;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, \
+0px 2px 0px 0px #205c73, 0px 2px 5px #999;-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;\
+box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;} #bigbutton{\
+position: fixed;    left: 580px;    top: 450px;} </style> </HEAD><BODY bgcolor=\" #F1F1F1\">"
+    a=""
+    people=showScore.readlines()
+    for i in people:
+        a+=i+"<br/>"
+
+    return cssCall+"<p style=\"text-align:center;font-size:40px;\">Scores<p/><p style=\"position: fixed;left: 600px;top: 100px;font-size:25px; \">"+a+"<p/><form action=\"../\" ><input id=\"bigbutton\" type=\"submit\" value=\"Main Menu\" /><body/><html/>"
 
 
     
@@ -89,6 +114,7 @@ position: fixed;    left: 580px;    top: 250px;} #text{position: fixed;left: 550
 width: 275px;    border-radius: 10px;    -moz-border-radius: 10px; -webkit-border-radius: 10px;    box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset;\
 -moz-box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset;    -webkit-box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset; -webkit-background-clip: padding-box;\
 outline: 0;</style> </HEAD><BODY bgcolor=\" #F1F1F1\">"
+
         middle="<p style=\"position: fixed;left: 600px;top: 150px;font-size:25px;\"> Hint: "+wordHint(randomList[0])+"<p/>"
 
         first="<p style=\"text-align:center;font-size:40px;\">"+randomDefinition+"<p/>"
