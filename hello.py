@@ -5,8 +5,8 @@ import os
 import random
 from wordnik import *
 apiUrl = 'http://api.wordnik.com/v4'
-##API key goes here
-apiKey = ''
+
+apiKey = '##API key goes here'
 client = swagger.ApiClient(apiKey, apiUrl)
 
 ##Call api to be used in WordApi
