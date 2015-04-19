@@ -111,19 +111,30 @@ letter-spacing:.1em;text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3); color: #fff;-web
 -moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #00CC00, 0px 10px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;\
 -moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;}#bigbutton:hover, #bigbutton:focus {color:#dfe7ea;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;\
 -moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;} #bigbutton{\
-position: fixed;    left: 580px;    top: 250px;} #text{position: fixed;left: 550px;top: 220px;padding: 1px 20px; border: 0;    height: 25px;\
+position: fixed;    left: 580px;    top: 250px;} \
+#hint {width:80px;background: #00CC00; padding: 8px 10px 8px; border:1px solid #3e9cbf; cursor:pointer; font-size:1.5em;\
+font-family:Oswald, sans-serif; letter-spacing:.1em;text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3); color: #fff;\
+-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;\
+box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;-moz-border-radius: 10px;-webkit-border-radius: 10px;\
+border-radius: 10px;}#hint:hover, #hint:focus {color:#dfe7ea;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;\
+-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;}\
+#hint{position: fixed;    left: 900px;    top: 175px;}\
+#text{position: fixed;left: 550px;top: 220px;padding: 1px 20px; border: 0;    height: 25px;\
 width: 275px;    border-radius: 10px;    -moz-border-radius: 10px; -webkit-border-radius: 10px;    box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset;\
 -moz-box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset;    -webkit-box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset; -webkit-background-clip: padding-box;\
 outline: 0;</style> </HEAD><BODY bgcolor=\" #F1F1F1\">"
 
-        middle="<p style=\"position: fixed;left: 600px;top: 150px;font-size:25px;\"> Hint: "+wordHint(randomList[0])+"<p/>"
+        middle="<div id=\"show\" ><p style=\"position: fixed;left: 550px;top: 150px;font-size:25px;\">Hint: "+wordHintNoLetter(randomList[0])+"</p></div>"
+
+        other="<div id=\"hideaway\" style=\"display:none;\"><p style=\"position: fixed;left: 550px;top: 150px;font-size:25px;\"> Hint: "+wordHint(randomList[0])+"<p/></div>"
 
         first="<p style=\"text-align:center;font-size:40px;\">"+randomDefinition+"<p/>"
         
         
 
         
-        return  cssCall+first+middle+"<form action=\"../GiveAnswer\" method=\"POST\"><input type=\"text\" id=\"text\" name=\"answer\"/> <input id=\"bigbutton\" type=\"submit\" value=\"Submit answer\" /></form><body/><html/> "
+        return  cssCall+first+middle+other+"<input id=\"hint\" type=\"submit\" value=\"Hint\" onClick=\"document.getElementById('hideaway').style.display=\'block\';document.getElementById('show').style.display='none'\"/><form action=\"../GiveAnswer\" method=\"POST\">\
+<input type=\"text\" id=\"text\" name=\"answer\"/> <input id=\"bigbutton\" type=\"submit\" value=\"Submit answer\" /></form><body/><html/> "
 
 
 @app.route("/GiveAnswer", methods=['POST'])
@@ -158,18 +169,30 @@ letter-spacing:.1em;text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3); color: #fff;-web
 -moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #00CC00, 0px 10px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;\
 -moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;}#bigbutton:hover, #bigbutton:focus {color:#dfe7ea;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;\
 -moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;} #bigbutton{\
-position: fixed;    left: 580px;    top: 250px;} #text{position: fixed;left: 550px;top: 220px;padding: 1px 20px; border: 0;    height: 25px;\
+position: fixed;    left: 580px;    top: 250px;} \
+#hint {width:80px;background: #00CC00; padding: 8px 10px 8px; border:1px solid #3e9cbf; cursor:pointer; font-size:1.5em;\
+font-family:Oswald, sans-serif; letter-spacing:.1em;text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3); color: #fff;\
+-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;\
+box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;-moz-border-radius: 10px;-webkit-border-radius: 10px;\
+border-radius: 10px;}#hint:hover, #hint:focus {color:#dfe7ea;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;\
+-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;}\
+#hint{position: fixed;    left: 900px;    top: 175px;}\
+#text{position: fixed;left: 550px;top: 220px;padding: 1px 20px; border: 0;    height: 25px;\
 width: 275px;    border-radius: 10px;    -moz-border-radius: 10px; -webkit-border-radius: 10px;    box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset;\
 -moz-box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset;    -webkit-box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset; -webkit-background-clip: padding-box;\
 outline: 0;</style> </HEAD><BODY bgcolor=\" #F1F1F1\">"
-    middle="<p style=\"position: fixed;left: 600px;top: 150px;font-size:25px;\"> Hint: "+wordHint(randomList[0])+"<p/>"
+
+    middle="<div id=\"show\" ><p style=\"position: fixed;left: 550px;top: 150px;font-size:25px;\">Hint: "+wordHintNoLetter(randomList[0])+"</p></div>"
+
+    other="<div id=\"hideaway\" style=\"display:none;\"><p style=\"position: fixed;left: 550px;top: 150px;font-size:25px;\"> Hint: "+wordHint(randomList[0])+"<p/></div>"
 
     first="<p style=\"text-align:center;font-size:40px;\">"+randomDefinition+"<p/>"
         
         
 
         
-    return  cssCall+first+middle+"<form action=\"../GiveAnswer\" method=\"POST\"><input type=\"text\" id=\"text\" name=\"answer\"/> <input id=\"bigbutton\" type=\"submit\" value=\"Submit answer\" /></form><body/><html/> "
+    return  cssCall+first+middle+other+"<input id=\"hint\" type=\"submit\" value=\"Hint\" onClick=\"document.getElementById('hideaway').style.display=\'block\';document.getElementById('show').style.display='none'\"/><form action=\"../GiveAnswer\" method=\"POST\">\
+<input type=\"text\" id=\"text\" name=\"answer\"/> <input id=\"bigbutton\" type=\"submit\" value=\"Submit answer\" /></form><body/><html/> "
 
 
 @app.route("/Restart", methods=['POST'])
@@ -216,18 +239,30 @@ letter-spacing:.1em;text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3); color: #fff;-web
 -moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #00CC00, 0px 10px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;\
 -moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;}#bigbutton:hover, #bigbutton:focus {color:#dfe7ea;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;\
 -moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;} #bigbutton{\
-position: fixed;    left: 580px;    top: 250px;} #text{position: fixed;left: 550px;top: 220px;padding: 1px 20px; border: 0;    height: 25px;\
+position: fixed;    left: 580px;    top: 250px;} \
+#hint {width:80px;background: #00CC00; padding: 8px 10px 8px; border:1px solid #3e9cbf; cursor:pointer; font-size:1.5em;\
+font-family:Oswald, sans-serif; letter-spacing:.1em;text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3); color: #fff;\
+-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;\
+box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;-moz-border-radius: 10px;-webkit-border-radius: 10px;\
+border-radius: 10px;}#hint:hover, #hint:focus {color:#dfe7ea;-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;\
+-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;box-shadow: inset 0px 1px 0px #3e9cbf, 0px 2px 0px 0px #205c73, 0px 2px 5px #999;}\
+#hint{position: fixed;    left: 900px;    top: 175px;}\
+#text{position: fixed;left: 550px;top: 220px;padding: 1px 20px; border: 0;    height: 25px;\
 width: 275px;    border-radius: 10px;    -moz-border-radius: 10px; -webkit-border-radius: 10px;    box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset;\
 -moz-box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset;    -webkit-box-shadow: 1px 1px 0 0 #FFF, 5px 5px 40px 2px #BBB inset; -webkit-background-clip: padding-box;\
 outline: 0;</style> </HEAD><BODY bgcolor=\" #F1F1F1\">"
-        middle="<p style=\"position: fixed;left: 600px;top: 150px;font-size:25px;\"> Hint: "+wordHint(randomList[0])+"<p/>"
 
-        first="<p style=\"text-align:center;font-size:40px;\">"+randomDefinition+"<p/>"
+    middle="<div id=\"show\" ><p style=\"position: fixed;left: 550px;top: 150px;font-size:25px;\">Hint: "+wordHintNoLetter(randomList[0])+"</p></div>"
+
+    other="<div id=\"hideaway\" style=\"display:none;\"><p style=\"position: fixed;left: 550px;top: 150px;font-size:25px;\"> Hint: "+wordHint(randomList[0])+"<p/></div>"
+
+    first="<p style=\"text-align:center;font-size:40px;\">"+randomDefinition+"<p/>"
         
         
 
         
-        return  cssCall+first+middle+"<form action=\"../GiveAnswer\" method=\"POST\"><input type=\"text\" id=\"text\" name=\"answer\"/> <input id=\"bigbutton\" type=\"submit\" value=\"Submit answer\" /></form><body/><html/> "
+    return  cssCall+first+middle+other+"<input id=\"hint\" type=\"submit\" value=\"Hint\" onClick=\"document.getElementById('hideaway').style.display=\'block\';document.getElementById('show').style.display='none'\"/><form action=\"../GiveAnswer\" method=\"POST\">\
+<input type=\"text\" id=\"text\" name=\"answer\"/> <input id=\"bigbutton\" type=\"submit\" value=\"Submit answer\" /></form><body/><html/> "
 
 
 
@@ -277,6 +312,28 @@ def wordHint(word):
             newWord+=i
     ##Print newWord created s_o_ e-_ _ _ _ _ (stone-sober)
     return newWord
+
+def wordHintNoLetter(word):
+
+    ##List of all letters in alphabet to replace with _ _
+    alphabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+    ##Make the word lowercase to check list easier
+    lowerWord=word.lower()
+
+    ##Create an empty word that will be populated with a few letters and _ _ _
+    newWord=""
+
+    for i in lowerWord:
+        
+        if i in alphabet  :
+
+            newWord+=i.replace(i,"_ ")
+        elif i not in alphabet :
+            newWord+=i
+    return newWord
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port,debug=False)
