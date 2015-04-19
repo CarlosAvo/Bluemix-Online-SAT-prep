@@ -4,6 +4,9 @@ This is a prototype for a vocabulary game that would help highschool students im
 # Setup
 
 1-Get Wordnik API key from http://developer.wordnik.com/
+
 2-Place API key inside hello.py file.
+
 3-Run hello.py and check if it's working locally.
+
 4-Deploy in bluemix.
