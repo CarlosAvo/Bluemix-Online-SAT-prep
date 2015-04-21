@@ -1,0 +1,17 @@
+<HTML> <HEAD><TITLE>SAT Vocabulary</TITLE>
+    <link rel="stylesheet" type="text/css" href="/static/css.css">
+    </HEAD>
+    <BODY bgcolor=" #F1F1F1">
+    <div id="show" ><p style="position: fixed;left: 550px;top: 150px;font-size:25px;">Hint: {{hintNoLetter}}</p></div>
+    
+    <div id="hideaway" style="display:none;"><p style="position: fixed;left: 550px;top: 150px;font-size:25px;"> Hint: {{wordHint}} <p/></div>
+     <p style="text-align:center;font-size:40px;">{{randomDef}}<p/>
+    
+    <input style="position: fixed;    left: 900px;    top: 200px;" id="hint" type="submit" value="Hint" onClick="document.getElementById('hideaway').style.display='block';document.getElementById('show').style.display='none'"/>
+    
+    <form action="../GiveAnswer" method="post">
+<input type="text" id="text" name="answer"/> <input id="bigbutton" type="submit" value="Submit answer" />
+    </form>
+    
+    </BODY>
+</HTML>
